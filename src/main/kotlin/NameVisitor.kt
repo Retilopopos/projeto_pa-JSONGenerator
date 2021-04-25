@@ -3,7 +3,7 @@ class NameVisitor: Visitor {
     var result: String = ""
 
     override fun visit(myObject: MyObject) {
-        result += "{\n"
+        result += myObject.encapsulateJson()
     }
 
     override fun visit(objectString: ObjectIsString) {

@@ -1,14 +1,15 @@
 import kotlin.reflect.full.declaredMemberProperties
 
-class MyObject(val receivingObject: Any) : Element() {
+class MyObject(val nome: String? = null, val receivingObject: Any) : Element() {
 
-    constructor(nome: String, receivingObject: Any) : this(receivingObject)
+    constructor(receivingObject: Any) : this(null, receivingObject)
 
     fun checkType(objName: String, objValue: Any?, v: Visitor){
+
         when(objValue){
             is Number -> ObjectIsNumber(objName, objValue).accept(v)
             is String -> ObjectIsString(objName, objValue).accept(v)
-            else -> objValue?.let { MyObject(it).accept(v) }
+            else -> objValue?.let { MyObject(objName, it).accept(v) }
         }
     }
 
@@ -19,6 +20,12 @@ class MyObject(val receivingObject: Any) : Element() {
         v.endvisit(this)
     }
 
+    fun encapsulateJson(): String {
+        if (nome == null){
+            return "{\n"
+        }else
+            return "\"$nome\" : {\n"
+    }
 
 
 }
