@@ -3,10 +3,10 @@ package relation
 import Visitors.Visitor
 
 abstract class Parent: Element() {
-    abstract val children: MutableList<Element>
+    abstract val child: MutableList<Element>
     override fun accept(v: Visitor) {
         if(v.visit(this))
-            children.forEach{
+            child.forEach{
                 it.accept(v)
             }
     }

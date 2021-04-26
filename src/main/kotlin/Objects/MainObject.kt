@@ -5,9 +5,9 @@ import relation.Parent
 
 
 class MainObject(val list: List<Pair<String, Element>>): Parent() {
-    override var children: MutableList<Element> = mutableListOf()
+    override var child: MutableList<Element> = mutableListOf()
     init {
-        list.forEach { children.add(it.second) }
+        list.forEach { child.add(it.second) }
     }
     override fun toString(): String {
         return "{ ${
