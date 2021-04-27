@@ -10,11 +10,11 @@ class ObjectIsArray(val list: List<Element>): Parent() {
         list.forEach { child.add(it) }
     }
     override fun toString(): String {
-        return "[ ${
+        return "[${
             list.joinToString(separator = ", ") {
                 "$it"
             }
-        } ]"
+        }]"
     }
 
 }
