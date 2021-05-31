@@ -1,8 +1,13 @@
 package Visitors
 
+import InstantiateObject
+import objects.MainObject
+import objects.ObjectIsString
 import relation.Children
 import relation.Element
 import relation.Parent
+import tests.Carro
+import tests.Estudante
 
 class NameVisitor(val enter: (Element) -> Boolean): Visitor {
 

@@ -3,10 +3,11 @@ package tests
 import Ignore
 import InstantiateObject
 import KeyName
-import Objects.ObjectIsString
+import objects.ObjectIsString
 import Visitors.NameVisitor
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
+
 enum class Carro {
     Nissan,
     Mazda,

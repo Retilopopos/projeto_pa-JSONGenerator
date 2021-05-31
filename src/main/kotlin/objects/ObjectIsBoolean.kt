@@ -1,9 +1,8 @@
-package Objects
+package objects
 
 import relation.Children
 
-data class ObjectIsNumber(override val value: Number) : Children() {
-
+data class ObjectIsBoolean(override var value: Boolean) : Children() {
     override fun toString(): String {
         return "$value"
     }

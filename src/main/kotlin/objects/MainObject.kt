@@ -1,11 +1,11 @@
-package Objects
+package objects
 
 import relation.Element
 import relation.Parent
 
 
-class MainObject(val list: List<Pair<String, Element>>): Parent() {
-    override var child: MutableList<Element> = mutableListOf()
+class MainObject(var list: MutableList<Pair<String, Element>>): Parent() {
+    override val child: MutableList<Element> = mutableListOf()
     init {
         list.forEach { child.add(it.second) }
     }
