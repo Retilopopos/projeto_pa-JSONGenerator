@@ -13,6 +13,7 @@ import tree.expandAll
 import java.lang.Exception
 
 class Edit: Actions {
+    override val name = "Edit"
     override fun apply(treeSkeleton: TreeSkeleton){
         val newWindow = Shell(treeSkeleton.shell)
         var item = treeSkeleton.tree.selection.first()

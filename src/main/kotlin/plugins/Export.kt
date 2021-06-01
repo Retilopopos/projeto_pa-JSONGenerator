@@ -12,6 +12,7 @@ import tree.TreeSkeleton
 import java.io.File
 
 class Export: Actions {
+    override val name = "Export"
     override fun apply(treeSkeleton: TreeSkeleton){
         val newWindow = Shell(treeSkeleton.shell)
         var item = treeSkeleton.tree.selection.first()

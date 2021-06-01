@@ -56,32 +56,17 @@ class TreeSkeleton(val instantiate: Element) {
         createTree(instantiate, tree)
 
     }
-    private fun editButton(treeSkeleton:TreeSkeleton){
-        val edit = Button(shell, SWT.PUSH)
-        edit.text = "Edit Element"
-        edit.addSelectionListener(object: SelectionAdapter(){
-            override fun widgetSelected(e: SelectionEvent) {
-                actionsPlugin[0].apply(treeSkeleton)
-            }
-        })
-    }
-    private fun exportButton(treeSkeleton:TreeSkeleton){
-        val x = Button(shell, SWT.PUSH)
-        x.text = "Export"
-        x.addSelectionListener(object: SelectionAdapter(){
-            override fun widgetSelected(e: SelectionEvent) {
-                actionsPlugin[1].apply(treeSkeleton)
-            }
-        })
-    }
-    private fun addToJsonButton(treeSkeleton:TreeSkeleton){
-        val x = Button(shell, SWT.PUSH)
-        x.text = "Add object"
-        x.addSelectionListener(object: SelectionAdapter(){
-            override fun widgetSelected(e: SelectionEvent) {
-                actionsPlugin[2].apply(treeSkeleton)
-            }
-        })
+
+    private fun addActions(treeSkeleton: TreeSkeleton){
+        actionsPlugin.forEach {
+            val x = Button(shell, SWT.PUSH)
+            x.text = it.name
+            x.addSelectionListener(object: SelectionAdapter(){
+                override fun widgetSelected(e: SelectionEvent) {
+                    it.apply(treeSkeleton)
+                }
+            })
+        }
     }
 
     fun plugins(){
@@ -127,9 +112,7 @@ class TreeSkeleton(val instantiate: Element) {
 
         tree.expandAll()
         iconsPlugin.apply(this)
-        editButton(this)
-        exportButton(this)
-        addToJsonButton(this)
+        addActions(this)
         shell.setSize(500, 500)
         shell.open()
         val display = Display.getDefault()

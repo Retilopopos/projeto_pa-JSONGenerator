@@ -18,6 +18,7 @@ import tree.expandAll
 import java.lang.Exception
 
 class AddToTree: Actions {
+    override val name = "AddToTree"
     override fun apply(treeSkeleton: TreeSkeleton){
         val newWindow = Shell(treeSkeleton.shell)
         var item = treeSkeleton.tree.selection.first()
