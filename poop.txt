@@ -1,1 +1,0 @@
-{ "carro": "Mustang", "idade": 22, "nome": "Bruno", "outroAluno": null, "repetente": true, "fds": "sfd" }
