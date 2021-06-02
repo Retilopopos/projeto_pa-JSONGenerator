@@ -38,36 +38,18 @@ class AddToTree: Actions {
         ok.addSelectionListener(object: SelectionAdapter(){
             override fun widgetSelected(e: SelectionEvent) {
                 when(item.data) {
-                    is ObjectIsString -> {
-                        val inputWindow = Shell(treeSkeleton.shell)
-                        inputWindow.text = "Error"
-                        inputWindow.setSize(170,80)
-                        inputWindow.layout = FillLayout(SWT.VERTICAL)
-                        val errorMessage = Label(inputWindow, SWT.NULL)
-                        errorMessage.text = "You have to select object"
-                        inputWindow.open()
-                    }
-                    is ObjectIsNumber -> {
-                        val inputWindow = Shell(treeSkeleton.shell)
-                        inputWindow.text = "Error"
-                        inputWindow.setSize(170,80)
-                        inputWindow.layout = FillLayout(SWT.VERTICAL)
-                        val errorMessage = Label(inputWindow, SWT.NULL)
-                        errorMessage.text = "You have to select object"
-                        inputWindow.open()
-                    }
-                    is ObjectIsBoolean -> {
-                        val inputWindow = Shell(treeSkeleton.shell)
-                        inputWindow.text = "Error"
-                        inputWindow.setSize(170,80)
-                        inputWindow.layout = FillLayout(SWT.VERTICAL)
-                        val errorMessage = Label(inputWindow, SWT.NULL)
-                        errorMessage.text = "You have to select object"
-                        inputWindow.open()
-                    }
                     is MainObject, is ObjectIsArray -> {
                         val x= InstantiateObject().instantiate(nTextElement.text)
                         (item.data as MainObject).list.add(Pair(nTextString.text as String,x))
+                    }
+                    else -> {
+                        val inputWindow = Shell(treeSkeleton.shell)
+                        inputWindow.text = "Error"
+                        inputWindow.setSize(170,80)
+                        inputWindow.layout = FillLayout(SWT.VERTICAL)
+                        val errorMessage = Label(inputWindow, SWT.NULL)
+                        errorMessage.text = "You have to select object"
+                        inputWindow.open()
                     }
                 }
                 newWindow.close()

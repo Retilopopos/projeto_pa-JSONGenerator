@@ -8,6 +8,7 @@ import relation.Element
 import relation.Parent
 import tests.Carro
 import tests.Estudante
+import kotlin.test.assertEquals
 
 class NameVisitor(val enter: (Element) -> Boolean): Visitor {
 
@@ -22,4 +23,12 @@ class NameVisitor(val enter: (Element) -> Boolean): Visitor {
     }
 
 
+}
+fun main(){
+    val visitor = NameVisitor() { it -> it is ObjectIsString && it.value == "Bruno"}
+    val aluno = Estudante("Bruno",22,true, Carro.Mustang)
+    val aluno2 = Estudante("Miguel",22,true, Carro.Mazda, aluno)
+    val alunoInstanciado = InstantiateObject().instantiate(aluno2)
+    alunoInstanciado.accept(visitor)
+    print(visitor.searchList.toString())
 }
